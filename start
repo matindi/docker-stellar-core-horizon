@@ -208,6 +208,7 @@ function init_stellar_core() {
 	run_silent "finalize-core-config" sed -ri "s/__PGPASS__/$PGPASS/g" etc/stellar-core.cfg
 
 	start_postgres
+	stellar-core --newhist local
 	run_silent "init-core-db" sudo -u stellar stellar-core --newdb --conf etc/stellar-core.cfg
 
 	touch .quickstart-initialized
